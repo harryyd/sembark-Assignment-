@@ -1,73 +1,143 @@
-# React + TypeScript + Vite
+# 🛍️ E-Commerce React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce web application built using **React + TypeScript + Tailwind CSS**.
+Includes product listing, search with debounce, cart management, and localStorage persistence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* 🛒 Add to Cart / Remove from Cart
+* 🔄 Cart persistence using **localStorage**
+* 🔍 Product search with **debounce optimization**
+* 📦 Product listing from external API
+* 🎨 Modern UI with Tailwind CSS
+* ⚡ Optimized state management using Context API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📦 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* React (with TypeScript)
+* Tailwind CSS
+* Axios
+* React Router DOM
+* React Context API
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ⚙️ Installation & Setup
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Follow these steps to run the project locally:
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2️⃣ Navigate into the project folder
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd your-repo-name
 ```
+
+---
+
+### 3️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 4️⃣ Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+### 5️⃣ Open in browser
+
+```
+http://localhost:5173
+```
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+│── components/        # Reusable UI components
+│── pages/             # Page-level components
+│── context/           # Global store (Cart, Products)
+│── assets/            # Images & static files
+│── App.tsx
+│── main.tsx
+```
+
+---
+
+## 🧠 How It Works
+
+### 🔹 Product Fetching
+
+* Products are fetched from an external API using Axios
+* Stored in global state (`allProducts` and `productData`)
+
+---
+
+### 🔹 Search System
+
+* Uses **debounce (500ms delay)** to optimize performance
+* Filters products based on:
+
+  * Title
+  * Description
+* Always filters from original dataset to avoid data loss
+
+---
+
+### 🔹 Cart System
+
+* Add/remove items from cart
+* Increase/decrease quantity
+* Total price calculated dynamically
+
+---
+
+## 🛠️ Future Improvements
+
+* ✅ User authentication
+* 💳 Payment integration
+* 📦 Order history
+* 🌐 Backend integration
+* 🔎 Advanced filters (price, category)
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork this repo and improve it. Pull requests are welcome!
+
+---
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Harshit Yadav**
+
+---
+
+⭐ If you like this project, don’t forget to star the repo!
