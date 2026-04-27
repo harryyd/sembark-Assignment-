@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,NavLink } from "react-router-dom";
 import axios from "axios";
 import StoreContext from "../context/StoreContext";
 
@@ -77,7 +77,27 @@ const SingleProduct: React.FC = () => {
         <div className="min-h-screen p-20 
       bg-gradient-to-br from-[#1a1025] via-[#2a1b3d] to-[#0f0a1a] text-white"
         >
+                    <NavLink
+      to="/"
+      className="ml-4 mb-6 mt-2
+        inline-flex items-center gap-2
+        px-5 py-2.5 rounded-xl font-medium
+        bg-white/10 backdrop-blur-md
+        border border-white/10
+        hover:bg-white/20
+        transition-all duration-300
+        hover:scale-105 active:scale-95
+        shadow-md hover:shadow-lg
+      "
+    >
+      ← Back to Home
+    </NavLink>
+
+
+            
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+
+
 
                 {/* Image Section */}
                 <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
