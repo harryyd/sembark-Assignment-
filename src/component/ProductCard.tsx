@@ -82,7 +82,7 @@ const addToCartHandler = (): void => {
             group-hover:bg-black/10 transition duration-300"
           />
         </div>
-      
+      </Link>
 
       {/* Content */}
       <div className="p-4 text-white">
@@ -98,14 +98,14 @@ const addToCartHandler = (): void => {
           <button className="px-4 py-1.5 text-sm font-semibold rounded-lg 
             bg-gradient-to-r from-green-500 to-emerald-600 
             hover:from-green-600 hover:to-emerald-700 
-            transition-all duration-200 active:scale-95"
+            transition-all duration-200 active:scale-95 cursor-pointer"
             onClick={addToCartHandler}
             >
             Add to Cart
           </button>
         </div>
       </div>
-      </Link>
+      
     </div>
   );
 };
