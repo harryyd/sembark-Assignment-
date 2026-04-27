@@ -82,7 +82,7 @@ const addToCartHandler = (): void => {
             group-hover:bg-black/10 transition duration-300"
           />
         </div>
-      </Link>
+      
 
       {/* Content */}
       <div className="p-4 text-white">
@@ -105,6 +105,7 @@ const addToCartHandler = (): void => {
           </button>
         </div>
       </div>
+      </Link>
     </div>
   );
 };
