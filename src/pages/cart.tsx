@@ -56,12 +56,12 @@ const Cart: React.FC = () => {
     <div className="md:col-span-2 space-y-4">
 
       {cartItems.length === 0 ? (
-        // ✅ Empty State UI
+    
         <div className="flex flex-col items-center justify-center 
           h-64 bg-white rounded-xl shadow text-center">
 
           <p className="text-lg font-medium text-gray-500">
-            Your cart is empty 🛍️
+            Your cart is empty
           </p>
 
           <p className="text-sm text-gray-400 mt-2">
@@ -70,7 +70,6 @@ const Cart: React.FC = () => {
 
         </div>
       ) : (
-        // ✅ Cart Items
         cartItems.map((item) => (
           <div
             key={item.id}
@@ -89,7 +88,7 @@ const Cart: React.FC = () => {
               {/* Quantity Controls */}
               <div className="flex items-center gap-2 mt-2">
                 <button
-                  className="px-2 py-1 bg-gray-200 rounded"
+                  className="px-2 py-1 bg-gray-200 rounded cursor-pointer"
                   onClick={() => decreaseQuantityHandler(item.id)}
                 >
                   -
@@ -98,7 +97,7 @@ const Cart: React.FC = () => {
                 <span>{item.quantity || 1}</span>
 
                 <button
-                  className="px-2 py-1 bg-gray-200 rounded"
+                  className="px-2 py-1 bg-gray-200 rounded cursor-pointer"
                   onClick={() => increaseQuantityHandler(item.id)}
                 >
                   +
