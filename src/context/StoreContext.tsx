@@ -9,6 +9,7 @@ type Product = {
     category?: {
         name : string
     };
+    // filter?: string[] 
     // quantity?: number;
 };
 interface StoreContextType {
@@ -17,8 +18,14 @@ interface StoreContextType {
     totalPrice?: number,
     itemsList?: number[],
     itemData?: Product[],
-    productData?: Product[];
-    allProducts?: Product[];
+    productData: Product[];
+    allProducts: Product[];
+    allCategory: string[],
+    filteredProducts: Product[],
+    query: string,
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
+    selectedCategory:string[],
+    handleCategory: (category : string) => void ,
     setProductData?: React.Dispatch<React.SetStateAction<Product[]>>;
     setAllProducts?: React.Dispatch<React.SetStateAction<Product[]>>;
     addToCart?: (data: Product) => void

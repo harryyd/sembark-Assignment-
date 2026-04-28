@@ -20,6 +20,35 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   const [itemData, setItemData] = useState<CartItem[]>([]);
   const [productData, setProductData] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([])
+  const [query, setQuery] = useState("");
+
+
+  console.log("aekgjl"  , selectedCategory.length)
+  // 
+
+const filteredProducts = useMemo(() => {
+  let result = allProducts;
+
+  // ✅ Category filter
+  if (selectedCategory.length > 0) {
+    result = result.filter((product) => {
+      const name = product.category?.name;
+      return name ? selectedCategory.includes(name) : false;
+    });
+  }
+
+  // ✅ Search filter
+  if (query.trim() !== "") {
+    const lowerQuery = query.toLowerCase();
+
+    result = result.filter((product) =>
+      product.title.toLowerCase().includes(lowerQuery)
+    );
+  }
+
+  return result;
+}, [allProducts, selectedCategory, query]);
 
 
   const addToCart = (data: Product) => {
@@ -73,6 +102,38 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+const handleCategory = (category:string) =>{
+  console.log(category) ;
+  
+  setSelectedCategory((prev)=>{
+    if(prev.includes(category)){
+      return prev.filter((cat) => cat !== category) 
+    } //already then remove 
+    else{
+      return [...prev , category] ;
+    }
+    // else addd
+  }
+  )
+}
+
+const getAllCategories = (products: Product[]): string[] => {
+  const categories: string[] = [];
+
+  for (let i = 0; i < products.length; i++) {
+    const categoryName= products[i]?.category?.name;
+
+    // check if already exists
+    if (categoryName && !categories.includes(categoryName)) {
+      categories.push(categoryName);
+    }
+  }
+
+  return categories;
+};
+
+//all category here
+const allCategories = getAllCategories(productData) ; 
 
  const totalItems = itemData.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -90,8 +151,14 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
         removeFromCart,
         productData,
         setProductData,
+        setQuery,
+        query,
+        filteredProducts,
         allProducts,
         setAllProducts,
+        allCategory:allCategories,
+        selectedCategory,
+        handleCategory,
         totalItems: itemData.length || totalItems,
         variables: "bnakai", 
         increaseQuantity,

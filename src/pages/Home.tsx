@@ -5,6 +5,7 @@ import axios from "axios";
 import { useContext } from "react";
 import StoreContext from "../context/StoreContext";
 import ProductSearch from "../component/ProductSearch";
+import ProductFilters from "../component/ProductFilters"
 
 
 
@@ -46,37 +47,61 @@ const Home = () => {
         getData();
     }, [])
     
-    const Allproduct:Product[] = store?.productData || [] ;
+    const Allproduct:Product[] = store?.filteredProducts || [] ;
     console.log("allproduct" , Allproduct) ;
+return (
+  <>
 
-    return (
+    <div className="px-6">
+      <ProductSearch />
+    </div>
 
-        <>
+    <div className="flex gap-6 p-6">
 
-        <div> <ProductSearch /> </div>
+      {/* 🔹 Sidebar (1/4 width) */}
+      <div className="w-0.5/4 min-w-[250px]">
+        <ProductFilters />
+      </div>
 
-      <div className="m-4 flex flex-row flex-wrap gap-6 justify-center  p-6 rounded-2xl shadow-lg bg-[rgba(170,59,255,0.1)]  bg-gradient-to-br from-[#1a1025] via-[#2a1b3d] to-[#0f0a1a] text-white" >
+      {/* 🔹 Product List (3/4 width) */}
+      <div
+  className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 
+  bg-gradient-to-br from-[#1a1025] via-[#2a1b3d] to-[#0f0a1a] 
+  p-6 rounded-2xl shadow-lg"
+>
+  {Allproduct.length > 0 ? (
+    Allproduct.map((prod: Product) => (
+      <ProductCard
+        key={prod.id}
+        id={prod.id}
+        title={prod.title}
+        price={prod.price}
+        images={prod.images}
+        category={prod?.category}
+      />
+    ))
+  ) : (
+    <div className="col-span-full flex flex-col items-center justify-center py-20 text-center">
+      
+      <div className="text-5xl mb-4"></div>
+
+      <h2 className="text-xl font-semibold text-white mb-2">
+        No products found
+      </h2>
+
+      <p className="text-gray-400 text-sm">
+        Try changing filters or search query
+      </p>
+
+    </div>
+  )}
+</div>
 
 
+    </div>
+  </>
+);
 
-            {Allproduct.length > 0 && Allproduct.map((prod: Product) => {
-                return (
-                        <ProductCard
-                            key={prod.id}
-                            id={prod.id}
-                            title={prod.title}
-                            price={prod.price}
-                            images={prod.images}
-                            category={prod?.category}
-                        />
-                        // <h1 className="text-xl font-bold">{prod.title}</h1>
-                    
-                )
-            })}
-            </div>
-        </>
-
-    )
 }
 
 export default Home;

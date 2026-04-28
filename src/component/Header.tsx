@@ -33,23 +33,6 @@ const Header = () => {
 
 
                     <NavLink
-                        to="/about"
-                        className={({ isActive }) =>
-                            `
-    relative px-4 py-2 rounded-lg text-sm font-medium
-    transition-all duration-300 ease-in-out
-
-    ${isActive
-                                ? "bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-700/30"
-                                : "text-gray-800 hover:text-white hover:bg-white/10"}
-    `
-                        }
-                    >
-                        About
-                    </NavLink>
-
-
-                    <NavLink
                         to="/cart"
                         className={({ isActive }) =>
                             `
@@ -62,7 +45,24 @@ const Header = () => {
     `
                         }
                     >
-                        cart
+                        Cart
+                    </NavLink>
+
+
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            `
+    relative px-4 py-2 rounded-lg text-sm font-medium
+    transition-all duration-300 ease-in-out
+
+    ${isActive
+                                ? "bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-700/30"
+                                : "text-gray-800 hover:text-white hover:bg-white/10"}
+    `
+                        }
+                    >
+                        about
                     </NavLink>
 
 
