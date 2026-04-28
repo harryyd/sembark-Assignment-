@@ -114,8 +114,9 @@ src/
 
 Users can filter products based on:
 📂 Category
-💰 Price range
+
 Filters are applied on the original dataset to prevent inconsistent results
+
 Works seamlessly with the search feature
 
 ---
